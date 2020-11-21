@@ -1,5 +1,6 @@
 package com.codewithchang;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -15,10 +16,13 @@ public class Main {
 
 	    Scanner scan = new Scanner(System.in);
 	    System.out.println("Enter your position (1-9):");
-	    int pos = scan.nextInt();
+	    int playerPos = scan.nextInt();
 
-        System.out.println(pos);
+        placePiece(gameBoard, playerPos, "player");
 
+        Random rand = new Random();
+        int cpuPos = rand.nextInt(9) + 1;
+        placePiece(gameBoard, cpuPos, "cpu");
 
         printGameBoard(gameBoard);
     }
@@ -36,7 +40,7 @@ public class Main {
 
         char symbol = ' ';
 
-        if(user.equals("User")) {
+        if(user.equals("player")) {
             symbol = 'X';
         } else if(user.equals("cpu")) {
             symbol = 'O';
